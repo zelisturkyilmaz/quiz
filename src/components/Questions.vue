@@ -1,8 +1,12 @@
 <template>
     <div class="questions-ctr">
         <div class="progress">
-            <div class="bar"></div>
-            <div class="status">1 out of 3 questions answered</div>
+            <div class="bar" 
+            :style="{width: `${progress}%`}">
+            </div>
+            <div class="status">
+                {{ questionsAnswered }} out of {{ questions.length }} questions answered
+            </div>
         </div>
         <div class="single-question" 
             v-for="(question, question_index) in questions" 
@@ -39,6 +43,12 @@ export default {
             this.$emit('question-answered', is_correct);
         },
     },
+
+    computed: {
+        progress() {
+            return (this.questionsAnswered / this.questions.length) *100
+        }
+    }
 }
 
 </script>
