@@ -1,8 +1,9 @@
 <template>
   <div class="ctr">
     <questions 
-      v-if="questionAnswered < questions.length"
+      v-if="questionsAnswered < questions.length"
       :questions="questions"
+      :questionsAnswered="questionsAnswered"
     ></questions>
     <result v-else></result>
     <button type="button" class="reset-btn">Reset</button>
@@ -22,7 +23,7 @@ export default {
 
   data() {
     return {
-      questionAnswered: 0,
+      questionsAnswered: 0,
       questions: [
         {
           q: 'What is 2 + 2?',
